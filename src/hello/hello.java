@@ -14,7 +14,7 @@ public class hello {
 		System.out.println("4. View Student");
 		System.out.println("5.Show a menu");
 		System.out.println("6.Exit");
-		
+		System.out.println("8");
 		System.out.println("hello!");
 	}
 }
