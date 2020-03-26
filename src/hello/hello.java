@@ -6,15 +6,52 @@ public class hello {
 	public static void main(String[]args) {
 		Scanner input =new Scanner(System.in);
 		int num =5;
-			
-		System.out.println("1. Add url");
-		System.out.println("2. Delete Student");
-		System.out.println(". Edit Student");
-		System.out.println("3. Edit Student");
-		System.out.println("4. View Student");
-		System.out.println("5.Show a menu");
-		System.out.println("6.Exit");
-		System.out.println("8");
-		System.out.println("hello!");
+		while(num != 6) {
+			System.out.println("1. Add Url");
+			System.out.println("2. Delete Url");
+			System.out.println("3. Edit Url");
+			System.out.println("4. View Url");
+			System.out.println("5.Show a menu");
+			System.out.println("6.Exit");
+			num = input.nextInt();
+			if(num==1) {
+				addUrl();
+			}else if(num==2) {
+				deleteUrl();
+			}else if(num ==3) {
+				editUrl();
+			}else if(num ==4) {
+				viewUrl();
+			}else {
+				continue;
+			}
+		
+		}
 	}
+	public static void addUrl(){
+		Scanner input = new Scanner(System.in);
+		System.out.println("URL ID: ");
+		int urlId = input.nextInt();
+		System.out.println("URL : ");
+		String url = input.next();
+		//추후에 description 을 넣어줘도 될거 같음.
+		System.out.println("Add Id is "+urlId);
+		System.out.println("Add url is "+url);	
+	}
+	public static void deleteUrl() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("URL ID: ");
+		int urlId = input.nextInt();
+	}
+	public static void editUrl() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("URL ID: ");
+		int urlId = input.nextInt();
+	}
+	public static void viewUrl() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("URL ID: ");
+		int urlId = input.nextInt();
+	}
+	
 }
