@@ -6,7 +6,7 @@ public class hello {
 	public static void main(String[]args) {
 		Scanner input =new Scanner(System.in);
 		Url_manager UM= new Url_manager(input);
-		int num =4;
+		int num =-1;
 		while(num != 5) {
 			System.out.println("1. Add Url");
 			System.out.println("2. Delete Url");

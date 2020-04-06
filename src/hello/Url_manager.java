@@ -44,7 +44,28 @@ public class Url_manager {
 		System.out.println("URL ID: ");
 		int urlId = input.nextInt();
 		if(MC.id == urlId) {
-			System.out.println("The url to be editied is"+urlId);
+			int num =-1;
+			while(num != 4) {
+				System.out.println("1. Edit Url");
+				System.out.println("2. Edit Title");
+				System.out.println("3. Edit Id");
+				//System.out.println("4. View Url");
+				System.out.println("4.Exit");
+				num = input.nextInt();
+				if(num==1) {
+					System.out.println("URL : ");
+					MC.URL = input.next();
+				}else if(num==2) {
+					System.out.println("URL Title : ");
+					MC.title = input.next();
+				}else if(num ==3) {
+					System.out.println("URL ID : ");
+					MC.id = input.nextInt();
+				}else {
+					continue;
+				}
+			
+			}
 		}
 	}
 	public void viewUrl() {
