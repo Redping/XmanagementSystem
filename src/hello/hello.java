@@ -34,7 +34,6 @@ public class hello {
 		int urlId = input.nextInt();
 		System.out.println("URL : ");
 		String url = input.next();
-		//추후에 description 을 넣어줘도 될거 같음.
 		System.out.println("Add Id is "+urlId);
 		System.out.println("Add url is "+url);	
 	}
