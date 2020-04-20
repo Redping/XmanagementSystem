@@ -2,6 +2,8 @@ package hello;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Music.MorCal;
+import Music.Popsong;
 public class Url_manager {
 	ArrayList<MorCal> MCs = new ArrayList<MorCal>();
 	//MorCal MC;
@@ -11,23 +13,29 @@ public class Url_manager {
 		this.input=input;
 	}
 	public void addUrl(){
-		MorCal MC= new MorCal();
-		
-		System.out.println("URL ID: ");
-		MC.id = this.input.nextInt();
-		
-		System.out.println("URL : ");
-		MC.URL = this.input.next();
-		
-		System.out.println("Title: ");
-		MC.title = this.input.next();
-		
-		MCs.add(MC);
-
-		System.out.println("Add Id is "+MC.id);
-		System.out.println("Add url is "+MC.URL);
-		System.out.println("Add Title is "+MC.title);
-		
+		int kind = 0;
+		MorCal MC;
+		while(kind!=1&&kind !=2) {
+			System.out.println("1 for Rock");
+			System.out.println("2 for Pop");
+			System.out.println("Select num for Student Kind between 1 and 2:");
+			kind = input.nextInt();
+			if(kind ==1) {
+				MC= new MorCal();
+				MC.getURLInput(input);
+				MCs.add(MC);
+				break;
+			}
+			else if(kind ==2) {
+				MC= new Popsong();
+				MC.getURLInput(input);
+				MCs.add(MC);
+				break;
+			} 
+			else {
+				System.out.println("Select num for Student Kind between 1 and 2:");
+			}
+		}	
 	}
 	public void deleteUrl() {
 		System.out.println("URL ID: ");
@@ -35,7 +43,7 @@ public class Url_manager {
 		int index = - 1;
 		for (int i=0;i<MCs.size();i++)
 		{
-			if(MCs.get(i).id == urlId) 
+			if(MCs.get(i).getId() == urlId) 
 			{
 				index=i;
 				break;
@@ -57,7 +65,7 @@ public class Url_manager {
 		int urlId = input.nextInt();
 		for(int i =0;i<MCs.size();i++) {
 			MorCal MC = MCs.get(i);
-			if(MC.id == urlId) {
+			if(MC.getId() == urlId) {
 				int num =-1;
 				while(num != 4) {
 					System.out.println("1. Edit Url");
@@ -67,13 +75,16 @@ public class Url_manager {
 					num = input.nextInt();
 					if(num==1) {
 						System.out.println("URL : ");
-						MC.URL = input.next();
+						String URL = input.next();
+						MC.setURL(URL);
 					}else if(num==2) {
 						System.out.println("URL Title : ");
-						MC.title = input.next();
+						String title = input.next();
+						MC.setTitle(title);
 					}else if(num ==3) {
 						System.out.println("URL ID : ");
-						MC.id = input.nextInt();
+						int id = input.nextInt();
+						MC.setId(id);
 					}else {
 						continue;
 					}
@@ -87,6 +98,7 @@ public class Url_manager {
 		
 //		System.out.println("URL ID: ");
 //		int urlId = input.nextInt();
+			System.out.println("# of registered Url:"+MCs.size());
 		for(int i =0;i<MCs.size();i++) {
 			MCs.get(i).printInfo();
 		}
