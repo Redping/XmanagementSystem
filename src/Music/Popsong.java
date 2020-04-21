@@ -18,6 +18,7 @@ public class Popsong extends MorCal {
 		while(answer !='y'&& answer!='Y'&&answer!='n'&&answer!='N') {
 			System.out.println("Do you have a Title ?(Y/N)");
 			answer = input.next().charAt(0);
+			
 			if(answer=='y'||answer=='Y') {
 				System.out.println("Title :");
 				String title =input.next();
@@ -31,12 +32,6 @@ public class Popsong extends MorCal {
 			else {
 			}	
 		}
-		
-		
-		
-		System.out.println("Title: ");
-		String title = input.next();
-		this.setTitle(title);
 	}
 	
 }

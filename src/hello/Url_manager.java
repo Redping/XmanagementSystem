@@ -95,9 +95,7 @@ public class Url_manager {
 		
 	}
 	public void viewUrls() {
-		
-//		System.out.println("URL ID: ");
-//		int urlId = input.nextInt();
+
 			System.out.println("# of registered Url:"+MCs.size());
 		for(int i =0;i<MCs.size();i++) {
 			MCs.get(i).printInfo();
