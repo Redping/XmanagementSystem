@@ -3,7 +3,10 @@ package Music;
 import java.util.Scanner;
 
 public class Popsong extends MorCal {
-	
+	public Popsong (MusicKind kind) {
+		super(kind);
+		//this.kind=kind;
+	}
 	public void getURLInput(Scanner input) {
 		System.out.println("URL ID: ");
 		int id = input.nextInt();

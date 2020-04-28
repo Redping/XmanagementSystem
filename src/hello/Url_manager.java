@@ -3,7 +3,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Music.MorCal;
+import Music.MusicKind;
 import Music.Popsong;
+import Music.Rock;
 public class Url_manager {
 	ArrayList<MorCal> MCs = new ArrayList<MorCal>();
 	//MorCal MC;
@@ -16,22 +18,29 @@ public class Url_manager {
 		int kind = 0;
 		MorCal MC;
 		while(kind!=1&&kind !=2) {
-			System.out.println("1 for Rock");
+			System.out.println("1 for MorCal");
 			System.out.println("2 for Pop");
-			System.out.println("Select num for Student Kind between 1 and 2:");
+			System.out.println("3 for Rock");
+			System.out.println("Select num 1, 2, or 3 :");
 			kind = input.nextInt();
 			if(kind ==1) {
-				MC= new MorCal();
+				MC= new MorCal(MusicKind.MorCal);
 				MC.getURLInput(input);
 				MCs.add(MC);
 				break;
 			}
 			else if(kind ==2) {
-				MC= new Popsong();
+				MC= new Popsong(MusicKind.Pop);
 				MC.getURLInput(input);
 				MCs.add(MC);
 				break;
-			} 
+			}
+			else if(kind ==3) {
+				MC = new Rock(MusicKind.Rock);
+				MC.getURLInput(input);
+				MCs.add(MC);
+				break;
+			}
 			else {
 				System.out.println("Select num for Student Kind between 1 and 2:");
 			}

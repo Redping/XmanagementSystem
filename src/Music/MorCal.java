@@ -3,11 +3,10 @@ package Music;
 import java.util.Scanner;
 
 public class MorCal {
-	protected MusicKind kind= MusicKind.Pop;
+	protected MusicKind kind= MusicKind.MorCal;
 	protected String title;
 	protected int id;
 	protected String URL;
-	
 	
 	public MusicKind getKind() {
 		return kind;
@@ -45,6 +44,13 @@ public class MorCal {
 	public MorCal() {
 		
 	}
+	public MorCal(MusicKind kind) {
+		this.kind=kind;
+	}
+	public MorCal(int id,String URL) {
+		this.id=id;
+		this.URL=URL;
+	}
 	
 	public MorCal(String title,int id,String URL) {
 		this.title=title;
@@ -52,8 +58,30 @@ public class MorCal {
 		this.URL=URL;
 	}
 	
+	public MorCal(MusicKind kind,String title,int id,String URL) {
+		this.kind=kind;
+		this.title=title;
+		this.id=id;
+		this.URL=URL;
+	}
 	public void printInfo() {
-		System.out.println("name:"+title+"id:"+id+"URL:"+URL);
+		String skind ="none";
+		switch(this.kind) {
+		case Rock:
+			skind="Rock";
+			break;
+		case Pop:
+			skind="Pop";
+			break;
+		case Ballad:
+			skind="Ballad";
+			break;
+		case Jazz:
+			skind="Jazz";
+			break;
+		default:
+		}
+		System.out.println("kind:"+skind+" title:"+title+" id:"+id+" URL:"+URL);
 	}
 	
 	public void getURLInput(Scanner input) {
