@@ -9,6 +9,7 @@ import Music.Rock;
 public class Url_manager {
 	ArrayList<MorCal> MCs = new ArrayList<MorCal>();
 	//MorCal MC;
+	//sk
 	Scanner input;
 	
 	public Url_manager(Scanner input) {
