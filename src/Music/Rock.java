@@ -17,18 +17,13 @@ public class Rock extends MorCal{
 		this.singer=singer;
 	}
 	public void getURLInput(Scanner input) {
-		System.out.println("URL ID: ");
-		int id = input.nextInt();
-		this.setId(id);
-		
-		System.out.println("URL : ");
-		String URL = input.next();
-		this.setURL(URL);
-		
-		System.out.println("title : ");
-		String title = input.next();
-		this.setTitle(title);
-		
+		setUrlID(input);
+		setURL(input);
+		setUrlTitle(input);
+		setSingerYN(input);
+			
+	}
+	public void setSingerYN(Scanner input) {
 		char answer ='x';
 		while(answer !='y'&& answer!='Y'&&answer!='n'&&answer!='N') {
 			System.out.println("Do you have a singer ?(Y/N)");
@@ -46,25 +41,10 @@ public class Rock extends MorCal{
 			}
 			else {
 			}
-		}	
+		}
 	}
 	public void printInfo() {
-		String skind ="none";
-		switch(this.kind) {
-		case Rock:
-			skind="Rock";
-			break;
-		case Pop:
-			skind="Pop";
-			break;
-		case Ballad:
-			skind="Ballad";
-			break;
-		case Jazz:
-			skind="Jazz";
-			break;
-		default:
-		}
+		String skind = getKindString();
 		System.out.println("kind:"+skind+" title:"+title+" id:"+id+" URL:"+URL+" Singer"+singer);
 	}
 }

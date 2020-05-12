@@ -2,14 +2,17 @@ package hello;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Music.Ballad;
 import Music.MorCal;
 import Music.MusicKind;
 import Music.Popsong;
 import Music.Rock;
+import Music.UserInput;
+
+
 public class Url_manager {
-	ArrayList<MorCal> MCs = new ArrayList<MorCal>();
+	ArrayList<UserInput> users = new ArrayList<UserInput>();
 	//MorCal MC;
-	//sk
 	Scanner input;
 	
 	public Url_manager(Scanner input) {
@@ -17,29 +20,31 @@ public class Url_manager {
 	}
 	public void addUrl(){
 		int kind = 0;
-		MorCal MC;
+		//MorCal MC;
+		UserInput userInput;
 		while(kind!=1&&kind !=2) {
-			System.out.println("1 for MorCal");
+			//System.out.println("1 for MorCal");
+			System.out.println("1 for Ballad");
 			System.out.println("2 for Pop");
 			System.out.println("3 for Rock");
 			System.out.println("Select num 1, 2, or 3 :");
 			kind = input.nextInt();
 			if(kind ==1) {
-				MC= new MorCal(MusicKind.MorCal);
-				MC.getURLInput(input);
-				MCs.add(MC);
+				userInput= new Ballad(MusicKind.MorCal);
+				userInput.getURLInput(input);
+				users.add(userInput);
 				break;
 			}
 			else if(kind ==2) {
-				MC= new Popsong(MusicKind.Pop);
-				MC.getURLInput(input);
-				MCs.add(MC);
+				userInput= (UserInput) new Popsong(MusicKind.Pop);
+				userInput.getURLInput(input);
+				users.add(userInput);
 				break;
 			}
 			else if(kind ==3) {
-				MC = new Rock(MusicKind.Rock);
-				MC.getURLInput(input);
-				MCs.add(MC);
+				userInput = new Rock(MusicKind.Rock);
+				userInput.getURLInput(input);
+				users.add(userInput);
 				break;
 			}
 			else {
@@ -50,65 +55,77 @@ public class Url_manager {
 	public void deleteUrl() {
 		System.out.println("URL ID: ");
 		int urlId = input.nextInt();
+		int index =findIndex(urlId);
+		removefromStudents(index,urlId);
+							
+	}
+	public int findIndex(int urlId) {
 		int index = - 1;
-		for (int i=0;i<MCs.size();i++)
+		for (int i=0;i<users.size();i++)
 		{
-			if(MCs.get(i).getId() == urlId) 
+			if(users.get(i).getId() == urlId) 
 			{
 				index=i;
 				break;
 			}
 		}
+		return index;
+	}
+	public int removefromStudents(int index,int urlId) {
 		if(index>=0) 
 		{
-			MCs.remove(index);
+			users.remove(index);
 			System.out.println("The URL" + urlId+"is deleted !");
+			return 1;
+			
 		}else {
 			System.out.println("The URL has not been registered");
-			return;
-		}					
+			return -1;
+		}
 	}
-	
 	public void editUrl() {
 		
 		System.out.println("URL ID: ");
 		int urlId = input.nextInt();
-		for(int i =0;i<MCs.size();i++) {
-			MorCal MC = MCs.get(i);
-			if(MC.getId() == urlId) {
+		for(int i =0;i<users.size();i++) {
+			UserInput userInput = users.get(i);
+			if(userInput.getId() == urlId) {
 				int num =-1;
 				while(num != 4) {
-					System.out.println("1. Edit Url");
-					System.out.println("2. Edit Title");
-					System.out.println("3. Edit Id");
-					System.out.println("4.Exit");
+					showEditMenu();
 					num = input.nextInt();
-					if(num==1) {
-						System.out.println("URL : ");
-						String URL = input.next();
-						MC.setURL(URL);
-					}else if(num==2) {
-						System.out.println("URL Title : ");
-						String title = input.next();
-						MC.setTitle(title);
-					}else if(num ==3) {
-						System.out.println("URL ID : ");
-						int id = input.nextInt();
-						MC.setId(id);
-					}else {
+					switch(num) {
+					case 1:
+						userInput.setURL(input);
+						break;
+					case 2:
+						userInput.setUrlTitle(input);
+						break;
+					case 3:
+						userInput.setUrlID(input);
+						break;
+					default:
 						continue;
 					}
+					
 				}
-				break;
 			}
-		}
 		
+		}
 	}
 	public void viewUrls() {
 
-			System.out.println("# of registered Url:"+MCs.size());
-		for(int i =0;i<MCs.size();i++) {
-			MCs.get(i).printInfo();
+			System.out.println("# of registered Url:"+users.size());
+		for(int i =0;i<users.size();i++) {
+			users.get(i).printInfo();
 		}
+	}
+
+	public void showEditMenu() {
+		System.out.println("1. Edit Url");
+		System.out.println("2. Edit Title");
+		System.out.println("3. Edit Id");
+		System.out.println("4.Exit");
+		
 	}
 }

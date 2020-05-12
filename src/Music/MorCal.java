@@ -2,7 +2,7 @@ package Music;
 
 import java.util.Scanner;
 
-public class MorCal {
+public abstract class MorCal implements UserInput {
 	protected MusicKind kind= MusicKind.MorCal;
 	protected String title;
 	protected int id;
@@ -64,7 +64,24 @@ public class MorCal {
 		this.id=id;
 		this.URL=URL;
 	}
-	public void printInfo() {
+	public abstract void printInfo();
+	
+	public void setURL(Scanner input) {
+		System.out.println("URL : ");
+		String URL = input.next();
+		this.setURL(URL);
+	}
+	public void setUrlID(Scanner input) {
+		System.out.println("URL ID : ");
+		int id = input.nextInt();
+		this.setId(id);
+	}
+	public void setUrlTitle(Scanner input) {
+		System.out.println("URL Title : ");
+		String title = input.next();
+		this.setTitle(title);
+	}
+	public String getKindString() {
 		String skind ="none";
 		switch(this.kind) {
 		case Rock:
@@ -81,21 +98,6 @@ public class MorCal {
 			break;
 		default:
 		}
-		System.out.println("kind:"+skind+" title:"+title+" id:"+id+" URL:"+URL);
-	}
-	
-	public void getURLInput(Scanner input) {
-		System.out.println("URL ID: ");
-		int id = input.nextInt();
-		this.setId(id);
-		
-		System.out.println("URL : ");
-		String URL = input.next();
-		this.setURL(URL);
-		
-		System.out.println("Title: ");
-		String title = input.next();
-		this.setTitle(title);
-				
+		return skind;
 	}
 }
