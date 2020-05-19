@@ -2,6 +2,8 @@ package Music;
 
 import java.util.Scanner;
 
+import Exceptions.Urlexception;
+
 public abstract class MorCal implements UserInput {
 	protected MusicKind kind= MusicKind.MorCal;
 	protected String title;
@@ -25,7 +27,7 @@ public abstract class MorCal implements UserInput {
 	}
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(int id) {
@@ -33,11 +35,14 @@ public abstract class MorCal implements UserInput {
 	}
 
 	public String getURL() {
-		return URL;
+		return this.URL;
 	}
 
-	public void setURL(String uRL) {
-		URL = uRL;
+	public void setURL(String uRL) throws Urlexception {
+		if(!uRL.contains(".")&& !uRL.equals("")) {
+			throw new Urlexception();
+		}
+		this.URL = uRL;
 	}
 
 	
@@ -67,9 +72,16 @@ public abstract class MorCal implements UserInput {
 	public abstract void printInfo();
 	
 	public void setURL(Scanner input) {
-		System.out.println("URL : ");
-		String URL = input.next();
-		this.setURL(URL);
+		String URL ="";
+		while(!URL.contains(".")) {
+			System.out.println("URL : ");
+			URL = input.next();
+			try {
+				this.setURL(URL);
+			} catch (Urlexception e) {
+				System.out.println("Incorrect URL Format. put the URL that contains .(dot) ");
+			}
+		}		
 	}
 	public void setUrlID(Scanner input) {
 		System.out.println("URL ID : ");

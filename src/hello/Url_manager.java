@@ -1,5 +1,6 @@
 package hello;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Music.Ballad;
@@ -23,33 +24,43 @@ public class Url_manager {
 		//MorCal MC;
 		UserInput userInput;
 		while(kind!=1&&kind !=2) {
-			//System.out.println("1 for MorCal");
-			System.out.println("1 for Ballad");
-			System.out.println("2 for Pop");
-			System.out.println("3 for Rock");
-			System.out.println("Select num 1, 2, or 3 :");
-			kind = input.nextInt();
-			if(kind ==1) {
-				userInput= new Ballad(MusicKind.MorCal);
-				userInput.getURLInput(input);
-				users.add(userInput);
-				break;
+			try {
+				//System.out.println("1 for MorCal");
+				System.out.println("1 for Ballad");
+				System.out.println("2 for Pop");
+				System.out.println("3 for Rock");
+				System.out.println("Select num 1, 2, or 3 :");
+				kind = input.nextInt();
+				if(kind ==1) {
+					userInput= new Ballad(MusicKind.MorCal);
+					userInput.getURLInput(input);
+					users.add(userInput);
+					break;
+				}
+				else if(kind ==2) {
+					userInput= (UserInput) new Popsong(MusicKind.Pop);
+					userInput.getURLInput(input);
+					users.add(userInput);
+					break;
+				}
+				else if(kind ==3) {
+					userInput = new Rock(MusicKind.Rock);
+					userInput.getURLInput(input);
+					users.add(userInput);
+					break;
+				}
+				else {
+					System.out.println("Select num for Student Kind between 1 and 2:");
+				}	
+			}catch(InputMismatchException e) {
+				System.out.println("Please put an integer between 1 and 3!");
+				if(input.hasNext()){
+					input.next();
+				}
+				kind =-1;
+				System.out.println(kind);
 			}
-			else if(kind ==2) {
-				userInput= (UserInput) new Popsong(MusicKind.Pop);
-				userInput.getURLInput(input);
-				users.add(userInput);
-				break;
-			}
-			else if(kind ==3) {
-				userInput = new Rock(MusicKind.Rock);
-				userInput.getURLInput(input);
-				users.add(userInput);
-				break;
-			}
-			else {
-				System.out.println("Select num for Student Kind between 1 and 2:");
-			}
+			
 		}	
 	}
 	public void deleteUrl() {
