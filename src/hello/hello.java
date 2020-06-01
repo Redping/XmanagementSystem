@@ -24,7 +24,7 @@ public class hello {
 			UM.setScanner(input);
 		}
 		selectMenu(input,UM);
-		putObject(UM,"urlManager.");
+		putObject(UM,"urlManager.ser");
 		
 	}
 	public static void selectMenu(Scanner input, Url_manager UM) {
