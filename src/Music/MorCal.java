@@ -1,10 +1,15 @@
 package Music;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import Exceptions.Urlexception;
 
-public abstract class MorCal implements UserInput {
+public abstract class MorCal implements UserInput,Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2427637948384726791L;
 	protected MusicKind kind= MusicKind.MorCal;
 	protected String title;
 	protected int id;

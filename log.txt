@@ -1,0 +1,2 @@
+Jun 01, 2020 3:34:53 PM Log.EventLogger log
+INFO: Add a url

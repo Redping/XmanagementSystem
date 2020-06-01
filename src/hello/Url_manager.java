@@ -1,20 +1,25 @@
 package hello;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Music.Ballad;
-import Music.MorCal;
 import Music.MusicKind;
 import Music.Popsong;
 import Music.Rock;
 import Music.UserInput;
 
 
-public class Url_manager {
+public class Url_manager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6024400563052126132L;
+	
 	ArrayList<UserInput> users = new ArrayList<UserInput>();
 	//MorCal MC;
-	Scanner input;
+	transient Scanner input;
 	
 	public Url_manager(Scanner input) {
 		this.input=input;
@@ -138,5 +143,8 @@ public class Url_manager {
 		System.out.println("3. Edit Id");
 		System.out.println("4.Exit");
 		
+	}
+	public void setScanner(Scanner input) {
+		this.input = input;
 	}
 }
